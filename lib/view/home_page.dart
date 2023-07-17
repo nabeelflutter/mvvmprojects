@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mvvmpattern/data/response/status.dart';
-import 'package:mvvmpattern/utils/routes/routes.dart';
+
 import 'package:mvvmpattern/utils/routes/routesname.dart';
 import 'package:mvvmpattern/view_modal/moiew_view_model.dart';
-import 'package:mvvmpattern/view_modal/services/splash_services.dart';
+
 import 'package:mvvmpattern/view_modal/user_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
+  
     moviesViewModel.getMoviesList();
     super.initState();
   }
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.pushNamed(context, RoutesName.loginPage);
                   });
                 },
-                child: Center(child: Text('LogOut')))
+                child: const Center(child: Text('LogOut')))
           ],
         ),
         body: ChangeNotifierProvider(
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
               builder: (context, value, _) {
                 switch (value.moviesList.status) {
                   case Status.LOADING:
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   case Status.ERROR:
@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                                     Text(value.moviesList.data!.movies![index]
                                         .averageRating
                                         .toString()),
-                                    Icon(
+                                    const Icon(
                                       Icons.star,
                                       color: Colors.yellow,
                                     )

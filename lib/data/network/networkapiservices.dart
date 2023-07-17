@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_adjacent_string_concatenation
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart';
@@ -9,10 +11,10 @@ class NetworkApiServices extends BaseApiAServices{
   Future getGetApiResponse(String url) async{
     dynamic responseJson;
     try{
-        final response = await get(Uri.parse(url)).timeout(Duration(seconds: 10));
+        final response = await get(Uri.parse(url)).timeout(const Duration(seconds: 10));
         responseJson =  responseRequest(response);
     } on SocketException{
-      throw FetchDataEception('No Internet Exception');
+      throw FetchDataException('No Internet Exception');
     }
     return responseJson;
 
@@ -22,10 +24,10 @@ class NetworkApiServices extends BaseApiAServices{
   Future getPostApiResponse(String url, dynamic data) async {
     dynamic responseJson;
     try{
-      final response = await post(Uri.parse(url),body:data).timeout(Duration(seconds: 10));
+      final response = await post(Uri.parse(url),body:data).timeout(const Duration(seconds: 10));
       responseJson =  responseRequest(response);
     } on SocketException{
-      throw FetchDataEception('No Internet Exception');
+      throw FetchDataException('No Internet Exception');
     }
     return responseJson;
   }
@@ -36,7 +38,7 @@ class NetworkApiServices extends BaseApiAServices{
       case 400 : throw BadRequestException(response.body.toString());
       case 404 : throw UnAuthorizedException(response.body.toString());
 
-      default: throw FetchDataEception('Error occurred while communication with server' + 'with status code' + response.statusCode.toString());
+      default: throw FetchDataException('Error occurred while communication with server' + 'with status code' + response.statusCode.toString());
     }
   }
 

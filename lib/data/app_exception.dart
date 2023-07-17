@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 class AppException implements Exception {
   final _message;
   final _prefix;
@@ -5,9 +7,9 @@ class AppException implements Exception {
   AppException([this._message, this._prefix]);
 }
 
-class FetchDataEception extends AppException {
+class FetchDataException extends AppException {
 
-  FetchDataEception([String? message])
+  FetchDataException([String? message])
       : super(message, 'Error During Communication');
 }
 

@@ -1,5 +1,5 @@
 
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:mvvmpattern/utils/routes/routesname.dart';
 import 'package:mvvmpattern/view/home_page.dart';
@@ -11,7 +11,7 @@ class Routes{
   static Route<dynamic> generateRoutes(RouteSettings settings){
     switch(settings.name){
       case RoutesName.homePage : return MaterialPageRoute(builder: (context) => const HomePage(),);
-      case RoutesName.loginPage : return MaterialPageRoute(builder: (context) =>  LoginPage(),);
+      case RoutesName.loginPage : return MaterialPageRoute(builder: (context) =>  const LoginPage(),);
       case RoutesName.signupPage : return MaterialPageRoute(builder: (context) => const SignUpPage(),);
       case RoutesName.splash : return MaterialPageRoute(builder: (context) => const SplashView(),);
       default:

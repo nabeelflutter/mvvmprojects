@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals, unnecessary_this
+
 class MoviesModel {
   List<Movies>? movies;
 
@@ -7,13 +9,13 @@ class MoviesModel {
     if (json['movies'] != null) {
       movies = <Movies>[];
       json['movies'].forEach((v) {
-        movies!.add(new Movies.fromJson(v));
+        movies!.add(Movies.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (this.movies != null) {
       data['movies'] = this.movies!.map((v) => v.toJson()).toList();
     }
@@ -28,14 +30,14 @@ class Movies {
   List<String>? genres;
   List<int>? ratings;
   String? poster;
-  dynamic? contentRating;
+  dynamic contentRating;
   String? duration;
   String? releaseDate;
-  dynamic? averageRating;
+  dynamic averageRating;
   String? originalTitle;
   String? storyline;
   List<String>? actors;
-  dynamic? imdbRating;
+  dynamic imdbRating;
   String? posterurl;
 
   Movies(
@@ -74,7 +76,7 @@ class Movies {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = this.id;
     data['title'] = this.title;
     data['year'] = this.year;

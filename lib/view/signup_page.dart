@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,14 +16,14 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   ValueNotifier<bool> obsText = ValueNotifier<bool>(true);
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -46,7 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 },
                 controller: _emailController,
                 hint: 'Email',
-                preIcon: Icon(Icons.email),
+                preIcon: const Icon(Icons.email),
                 textInputType: TextInputType.emailAddress,
               ),
               ValueListenableBuilder(
@@ -56,7 +58,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   },
                   controller: _passwordController,
                   hint: 'Password',
-                  preIcon: Icon(Icons.lock),
+                  preIcon: const Icon(Icons.lock),
                   textInputType: TextInputType.visiblePassword,
                   obsText: obsText.value,
                   character: '*',
@@ -82,7 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       'password' : _passwordController.text.toString()
                     };
                     authViewModal.registerApi(data,context);
-                    print('Api hit');
+                    
                   }
                   else{
                     print('Failed');
@@ -94,7 +96,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   onTap: (){
                     Navigator.pushNamed(context, RoutesName.loginPage);
                   },
-                  child: Text("Already have an account? Sign In"))
+                  child: const Text("Already have an account? Sign In"))
             ],
           ),
         ));

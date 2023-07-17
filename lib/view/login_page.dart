@@ -1,28 +1,30 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:mvvmpattern/utils/routes/routesname.dart';
 import 'package:mvvmpattern/view_modal/view_modal.dart';
 import 'package:provider/provider.dart';
 import '../res/components/custombutton.dart';
 import '../res/components/customtextformfield.dart';
-import '../utils/utils.dart';
+
 import '../utils/validation/validation.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   ValueNotifier<bool> obsText = ValueNotifier<bool>(true);
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -47,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 controller: _emailController,
                 hint: 'Email',
-                preIcon: Icon(Icons.email),
+                preIcon: const Icon(Icons.email),
                 textInputType: TextInputType.emailAddress,
               ),
               ValueListenableBuilder(
@@ -57,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   controller: _passwordController,
                   hint: 'Password',
-                  preIcon: Icon(Icons.lock),
+                  preIcon: const Icon(Icons.lock),
                   textInputType: TextInputType.visiblePassword,
                   obsText: obsText.value,
                   character: '*',
@@ -83,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                       'password' : 'cityslicka'
                     };
                     authViewModal.loginApi(data,context);
-                    print('Api hit');
+                    
                   }
                   else{
                     print('Failed');
@@ -95,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                   onTap: (){
                     Navigator.pushNamed(context, RoutesName.signupPage);
                   },
-                  child: Text("Don't have an account? Sign Up"))
+                  child: const Text("Don't have an account? Sign Up"))
             ],
           ),
         ));

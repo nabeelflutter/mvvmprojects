@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 import '../view_modal/services/splash_services.dart';
@@ -13,7 +15,7 @@ class _SplashViewState extends State<SplashView> {
   SplashServices splashServices = SplashServices();
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     splashServices.checkAuthentication(context);
   }
